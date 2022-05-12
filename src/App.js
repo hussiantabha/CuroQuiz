@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <h1>CuroQuiz</h1>
+      </div>
+      <section className="quiz-card-section-container">
+        <div className="quiz-card-container">
+          <Link to="/suits-quiz">
+            <div className="quiz-img-container">
+              <img src="https://picsum.photos/320/180" />
+            </div>
+            <div className="quiz-content-container">
+              <h2>Suits Quiz</h2>
+              <p>Take this quiz to test yourself</p>
+              <span>5 questions</span>
+            </div>
+          </Link>
+        </div>
+        <div className="quiz-card-container">
+          <Link to="/marvel-quiz">
+            <div className="quiz-img-container">
+              <img src="https://picsum.photos/320/180" />
+            </div>
+            <div className="quiz-content-container">
+              <h2>Marvel Quiz</h2>
+              <p>Take this quiz to test your MCU knowledge!</p>
+              <span>5 questions</span>
+            </div>
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }
 

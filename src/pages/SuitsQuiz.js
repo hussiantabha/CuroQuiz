@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { question as data } from "../suitsData";
 import { Navigate, useNavigate, useLocation } from "react-router-dom";
-import { QuizContext } from "../quizReducer";
+import { QuizContext } from "../reducers/quizReducer";
 
 const SuitsQuiz = () => {
   const [quizQuestion, setQuizQuestion] = useState(0);
@@ -31,7 +31,7 @@ const SuitsQuiz = () => {
       <h2>{currentQuestion.question}</h2>
       {currentQuestion.options.map((item) => {
         return (
-          <>
+          <div key={item}>
             <button
               className="btn btn-primary-outline"
               onClick={() => {
@@ -41,7 +41,7 @@ const SuitsQuiz = () => {
             >
               {item}
             </button>
-          </>
+          </div>
         );
       })}
       <button onClick={() => setQuizQuestion((prev) => prev + 1)}>Skip</button>

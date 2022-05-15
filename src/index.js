@@ -5,7 +5,7 @@ import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SuitsQuiz from "./pages/SuitsQuiz";
 import MarvelQuiz from "./pages/MarvelQuiz";
-import { QuizContextProvider } from "./quizReducer";
+import { QuizContextProvider } from "./reducers/quizReducer";
 import Results from "./pages/Results";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

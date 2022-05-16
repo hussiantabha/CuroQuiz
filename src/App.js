@@ -1,17 +1,16 @@
 import "./App.css";
 import { Link } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <>
-      <div className="App">
-        <h1>CuroQuiz</h1>
-      </div>
+      <Navbar />
       <section className="quiz-card-section-container">
         <div className="quiz-card-container">
           <Link to="/suits-quiz">
             <div className="quiz-img-container">
-              <img src="https://picsum.photos/320/180" />
+              <img src="../assets/suits.jpg" className="quiz-img" />
             </div>
             <div className="quiz-content-container">
               <h2>Suits Quiz</h2>
@@ -21,13 +20,13 @@ function App() {
           </Link>
         </div>
         <div className="quiz-card-container">
-          <Link to="/marvel-quiz">
+          <Link to="/startup-quiz">
             <div className="quiz-img-container">
-              <img src="https://picsum.photos/320/180" />
+              <img src="../assets/startup.jpg" className="quiz-img" />
             </div>
             <div className="quiz-content-container">
-              <h2>Marvel Quiz</h2>
-              <p>Take this quiz to test your MCU knowledge!</p>
+              <h2>Startup Quiz</h2>
+              <p>Are you a startup geek like me? Take this quiz</p>
               <span>5 questions</span>
             </div>
           </Link>

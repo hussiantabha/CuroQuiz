@@ -8,13 +8,20 @@ const QuizContextProvider = ({ children }) => {
       case "suitQuiz": {
         return {
           ...state,
-          suitsAnswers: [...state.suitsAnswers, action.payload.value],
+          suitsAnswers: action.payload.value,
+        };
+      }
+      case "businessQuiz": {
+        return {
+          ...state,
+          busissAnswers: action.payload.value,
         };
       }
     }
   };
   const [quizState, dispatch] = useReducer(reducerFunc, {
     suitsAnswers: [],
+    busissAnswers: [],
   });
   return (
     <QuizContext.Provider value={{ quizState, dispatch }}>

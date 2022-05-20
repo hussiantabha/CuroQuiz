@@ -1,23 +1,21 @@
-import React, { useContext, useEffect, useState } from "react";
-import { question as data } from "../data/suitsData";
-import { Navigate, useNavigate, useLocation } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
 import { QuizContext } from "../reducers/quizReducer";
 import Navbar from "../components/Navbar";
-const SuitsQuiz = () => {
+import { businessData as data } from "../data/businessData";
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
+
+const MarvelQuiz = () => {
   const [quizQuestion, setQuizQuestion] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(data[quizQuestion]);
-  const navigate = useNavigate();
   const { quizState, dispatch } = useContext(QuizContext);
+  const [answers, setAnswers] = useState([]);
+  const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
-    setCurrentQuestion(data[quizQuestion]);
-  }, []);
-  const end = () => {
-    console.log("in end");
-    <Navigate to="/results" state={{ from: location }} />;
-  };
-  useEffect(() => {
-    dispatch({ type: "suitQuiz", payload: { value: answers } });
+    dispatch({
+      type: "businessQuiz",
+      payload: { value: answers },
+    });
     if (quizQuestion === data.length) {
       navigate("/results", { state: location });
       setQuizQuestion(0);
@@ -25,9 +23,10 @@ const SuitsQuiz = () => {
       setCurrentQuestion(data[quizQuestion]);
     }
   }, [quizQuestion]);
-  const [answers, setAnswers] = useState([]);
-  console.log(quizState);
-  console.log(answers);
+  const nextQuestion = (item) => {
+    setAnswers((prevState) => [...prevState, item]);
+    setQuizQuestion((prev) => prev + 1);
+  };
   return (
     <>
       <Navbar />
@@ -40,10 +39,7 @@ const SuitsQuiz = () => {
                 <button
                   key={item}
                   className="btn btn-primary-outline"
-                  onClick={() => {
-                    setAnswers((prevState) => [...prevState, item]);
-                    setQuizQuestion((prev) => prev + 1);
-                  }}
+                  onClick={() => nextQuestion(item)}
                 >
                   {item}
                 </button>
@@ -62,21 +58,4 @@ const SuitsQuiz = () => {
   );
 };
 
-export default SuitsQuiz;
-{
-  /* {data.map(({ question, options, correctAnswer }) => {
-        return (
-          <>
-            <h5>{question}</h5>
-            {options.map((item) => {
-              return (
-                <>
-                  <input type="radio" name="question" value={item} /> {item}
-                  <button className="btn btn-primary-outline">{item}</button>
-                </>
-              );
-            })}
-          </>
-        );
-      })} */
-}
+export default MarvelQuiz;

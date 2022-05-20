@@ -1,5 +1,16 @@
+@import "./css/quizQuestion.css";
+@import "./css/results.css";
+@import "./css/rules.css";
 .App {
   text-align: center;
+}
+.nav {
+  background-color: var(--primary);
+  padding: 1.25rem 0.5rem;
+  color: white;
+}
+.colorWhite {
+  color: white;
 }
 .quiz-card-section-container {
   margin-top: 5rem;
@@ -21,4 +32,8 @@
   padding-left: 0.5rem;
   padding-bottom: 0.5rem;
   row-gap: 0.5rem;
+}
+.quiz-img {
+  width: 320px;
+  height: 180px;
 }

@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { QuizContext } from "../reducers/quizReducer";
 import { businessData } from "../data/businessData";
+import { iplData } from "../data/iplData";
+import { question as suitsData } from "../data/suitsData";
 
 const DisplayResults = ({
   data,
@@ -8,6 +10,7 @@ const DisplayResults = ({
   businessCorrectAnswers,
 }) => {
   const { quizState, dispatch } = useContext(QuizContext);
+  console.log(data);
   return (
     <section className="results-container">
       {data.map(({ question, correctAnswer, options }) => {
@@ -28,9 +31,15 @@ const DisplayResults = ({
                             ? "btn btn-success"
                             : "btn btn-danger"
                           : "btn btn-primary-outline"
-                        : quizState.suitsAnswers.includes(item)
+                        : data === suitsData
+                        ? quizState.suitsAnswers.includes(item)
+                          ? correctAnswer.includes(item)
+                            ? "btn btn-success"
+                            : "btn btn-danger"
+                          : "btn btn-primary-outline"
+                        : quizState.iplAnswers.includes(item)
                         ? correctAnswer.includes(item)
-                          ? " btn btn-success"
+                          ? "btn btn-success"
                           : "btn btn-danger"
                         : "btn btn-primary-outline"
                     }
@@ -48,3 +57,44 @@ const DisplayResults = ({
 };
 
 export default DisplayResults;
+
+// correctAnswer.includes(item)
+//   ? " btn btn-success"
+//   : data === businessData
+//   ? quizState.busissAnswers.includes(item)
+//     ? correctAnswer.includes(item)
+//       ? "btn btn-success"
+//       : "btn btn-danger"
+//     : "btn btn-primary-outline"
+//   : quizState.suitsAnswers.includes(item)
+//   ? correctAnswer.includes(item)
+//     ? " btn btn-success"
+//     : "btn btn-danger"
+//   : "btn btn-primary-outline";
+
+// quizState.suitsAnswers.includes(item)
+//   ? correctAnswer.includes(item)
+//     ? " btn btn-success"
+//     : "btn btn-danger"
+//   : "btn btn-primary-outline";
+
+//final
+// correctAnswer.includes(item)
+//   ? " btn btn-success"
+//   : data === businessData
+//   ? quizState.busissAnswers.includes(item)
+//     ? correctAnswer.includes(item)
+//       ? "btn btn-success"
+//       : "btn btn-danger"
+//     : "btn btn-primary-outline"
+//   : data === suitsData
+//   ? quizState.suitsAnswers.includes(item)
+//     ? correctAnswer.includes(item)
+//       ? "btn btn-success"
+//       : "btn btn-danger"
+//     : "btn btn-primary-outline"
+//   : quizState.iplAnswers.includes(item)
+//   ? correctAnswer.includes(item)
+//     ? "btn btn-success"
+//     : "btn btn-danger"
+//   : "btn btn-primary-outline";

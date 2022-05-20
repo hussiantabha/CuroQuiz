@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className="nav">
       <div>
-        <Link to={"/"}>
+        <Link to={"/"} className="colorWhite">
           <h2>CuroQuiz</h2>
         </Link>
       </div>

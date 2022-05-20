@@ -5,7 +5,7 @@ export const question = [
       "Rachel Zane",
       "Donna Paulsen",
       "Jessica Pearson",
-      "samantha wheeler",
+      "Samantha Wheeler",
     ],
     correctAnswer: "Jessica Pearson",
   },

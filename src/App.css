@@ -1,11 +1,15 @@
 @import "./css/quizQuestion.css";
 @import "./css/results.css";
+@import "./css/rules.css";
 .App {
   text-align: center;
 }
 .nav {
   background-color: var(--primary);
   padding: 1.25rem 0.5rem;
+  color: white;
+}
+.colorWhite {
   color: white;
 }
 .quiz-card-section-container {

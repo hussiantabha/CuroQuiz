@@ -17,11 +17,15 @@ const QuizContextProvider = ({ children }) => {
           busissAnswers: action.payload.value,
         };
       }
+      case "iplQuiz": {
+        return { ...state, iplAnswers: action.payload.value };
+      }
     }
   };
   const [quizState, dispatch] = useReducer(reducerFunc, {
     suitsAnswers: [],
     busissAnswers: [],
+    iplAnswers: [],
   });
   return (
     <QuizContext.Provider value={{ quizState, dispatch }}>

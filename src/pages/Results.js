@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { QuizContext } from "../reducers/quizReducer";
 import { question as data } from "../data/suitsData";
 import { businessData } from "../data/businessData";
+import { iplData } from "../data/iplData";
 import DisplayResults from "../components/DisplayResults";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
@@ -17,6 +18,9 @@ const Results = () => {
   const businessCorrectAnswers = quizState.busissAnswers.filter((item1) =>
     businessData.some((item2) => item1 === item2.correctAnswer)
   );
+  const iplCorrectAnswers = quizState.iplAnswers.filter((item1) =>
+    iplData.some((item2) => item1 === item2.correctAnswer)
+  );
   return (
     <>
       <Navbar />
@@ -27,16 +31,20 @@ const Results = () => {
               <h4>
                 correct answers {correct.length}/{data.length}
               </h4>
+            ) : fromPath === "/startup-quiz" ? (
+              <h4>
+                Correct Answers {businessCorrectAnswers.length}/
+                {businessData.length}
+              </h4>
             ) : (
               <h4>
-                correct answers {businessCorrectAnswers.length}/
-                {businessData.length}
+                Correct Answers {iplCorrectAnswers.length}/{iplData.length}
               </h4>
             )}
           </div>
           <div>
             <h4>
-              Points:{" "}
+              Points:
               {fromPath === "/suits-quiz"
                 ? `${correct.length * 50}`
                 : `${businessCorrectAnswers.length * 50}`}
@@ -44,9 +52,16 @@ const Results = () => {
           </div>
         </main>
         <DisplayResults
-          data={fromPath === "/suits-quiz" ? data : businessData}
+          data={
+            fromPath === "/suits-quiz"
+              ? data
+              : fromPath === "/startup-quiz"
+              ? businessData
+              : iplData
+          }
           suitsCorrectAnswers={correct}
           businessCorrectAnswers={businessCorrectAnswers}
+          iplCorrectAnswers={iplCorrectAnswers}
         />
         <div className="btn-center">
           <button
@@ -80,3 +95,9 @@ export default Results;
 //                         ? "btn-success"
 //                         : "btn-danger"
 //                       : "btn-primary-outline"
+
+{
+  /* <h4>
+  correct answers {businessCorrectAnswers.length}/{businessData.length}
+</h4>; */
+}

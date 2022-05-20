@@ -47,7 +47,9 @@ const Results = () => {
               Points:
               {fromPath === "/suits-quiz"
                 ? `${correct.length * 50}`
-                : `${businessCorrectAnswers.length * 50}`}
+                : fromPath === "/startup-quiz"
+                ? `${businessCorrectAnswers.length * 50}`
+                : `${iplCorrectAnswers.length * 50}`}
             </h4>
           </div>
         </main>
@@ -69,7 +71,9 @@ const Results = () => {
             onClick={() =>
               fromPath === "/suits-quiz"
                 ? navigate("/suits-quiz")
-                : navigate("/startup-quiz")
+                : fromPath === "startup-quiz"
+                ? navigate("/startup-quiz")
+                : navigate("/ipl-quiz")
             }
           >
             ReTake Test
@@ -100,4 +104,8 @@ export default Results;
   /* <h4>
   correct answers {businessCorrectAnswers.length}/{businessData.length}
 </h4>; */
+}
+
+{
+  /* `${businessCorrectAnswers.length * 50}`} */
 }

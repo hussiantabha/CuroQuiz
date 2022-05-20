@@ -23,6 +23,10 @@ const MarvelQuiz = () => {
       setCurrentQuestion(data[quizQuestion]);
     }
   }, [quizQuestion]);
+  const nextQuestion = (item) => {
+    setAnswers((prevState) => [...prevState, item]);
+    setQuizQuestion((prev) => prev + 1);
+  };
   return (
     <>
       <Navbar />
@@ -35,11 +39,7 @@ const MarvelQuiz = () => {
                 <button
                   key={item}
                   className="btn btn-primary-outline"
-                  onClick={() => {
-                    setAnswers((prevState) => [...prevState, item]);
-
-                    setQuizQuestion((prev) => prev + 1);
-                  }}
+                  onClick={() => nextQuestion(item)}
                 >
                   {item}
                 </button>
